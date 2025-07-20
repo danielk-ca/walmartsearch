@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Walmart Canada Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <style>
+        body {
+            background: #ffffff;
+        }
+
+        .alert {
+            display: none;
+        }
+
+        /* Add some styling to the SVG icon */
+        .searchicon {
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            fill: currentColor; /* This makes the icon inherit the text color */
+        }
+
+        /* Add some styling to the SVG icon */
+        .clearicon {
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            fill: currentColor; /* This makes the icon inherit the text color */
+        }
+
+        /* Remove border radius for text input, clear button, and search button */
+        #textInput1, #clearBtn1, #searchBtn1 {
+            border-radius: 0 !important;  /* Ensure the border radius is removed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center mt-5">
+        <a href="Index.html"><img src="images/refresh.png"></a></br>
+
+<!-- Walmart Canada -->
+
+    </br>
+    <h5><b><span style='background:rgb(169, 213, 181)'>Limit Search Products Sold by Walmart Canada</span></b></h5>
+    </br>
+    <a href="https://trianguloy.github.io/intent/#Intent;action=android.intent.action.MAIN;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end" target="_blank"><img width="207" src="images/walmart-canada.png"/></a></br>
+
+    <div class="col-md-6 offset-md-3 mt-4">
+        <div class="input-group mb-3">
+            <input type="text" id="textInput1" class="form-control" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary" id="clearBtn1">
+                <svg class="clearicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256z"/>
+                </svg>
+            </button>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="searchBtn1">
+                    <svg class="searchicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 .1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="alertBox1" class="alert alert-info" role="alert"></div>
+    </div>
+
+    </br>
+
+    <hr/>
+
+    <script>
+
+// JavaScript Section Start
+
+// Walmart Canada
+
+        // Handle Clear Button Click
+        document.getElementById('clearBtn1').addEventListener('click', function() {
+            // Clear the textbox
+            document.getElementById('textInput1').value = '';
+            const alertBox1 = document.getElementById('alertBox1');
+            alertBox1.style.display = 'none'; // Hide the alert component
+        });
+
+        // Handle function to perform the search
+        function performSearch1() {
+        const textInput = document.getElementById('textInput1').value.trim();
+
+            // Proceed if textbox is not empty
+            if (textInput) {
+
+                const plaintext1 = document.getElementById('textInput1').value;
+                const plaintext2 = document.getElementById('textInput1').value;
+
+                // URL Encoding (Percent Encoding) the Query String part of the full URL using encodeURIComponent
+                // The encodeURIComponent function fails to encode certain special characters - _ . ! ~ * ' ( ) ----- You have to manually specify conversion to corresponding UTF-8 Character
+                // For encodeURIComponent function to have full coverage of all special characters, coding below manually specifies conversion to UTF-8 for characters not natively supported
+                // Once encodeURIComponent function has full coverage of all special characters, any desired deviation from UTF-8 can be specified
+    
+                // As per RFC 3986, certain special characters that are allowed in a URI (i.e. not URL encoded) are: hyphen ( - ), underscore ( _ ), period ( . ), and tilde ( ~ )
+                const encoded1 = encodeURIComponent(plaintext1)
+                .replace(/%20/g, '+')// Convert %20 to + (For application/x-www-form-urlencoded, spaces are to be replaced by +) ----- If URL Encoding Desired, delete this line
+                .replace(/-/g, '-')// Convert - to - (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/-/g, '%2D')
+                .replace(/_/g, '_')// Convert _ to _ (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/_/g, '%5F')
+                .replace(/\./g, '.')// Convert . to . (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/\./g, '%2E')
+                .replace(/!/g, '%21')// Convert ! to %21
+                .replace(/~/g, '~')// Convert ~ to ~ (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/~/g, '%7E')
+                .replace(/\*/g, '%2A')// Convert * to %2A
+                .replace(/'/g, '%27')// Convert ' to %27
+                .replace(/\(/g, '%28')// Convert ( to %28
+                .replace(/\)/g, '%29');// Convert ) to %29
+
+                const encoded2 = encodeURIComponent(plaintext2)
+                .replace(/%20/g, '%20')
+                .replace(/-/g, '%2D')
+                .replace(/_/g, '%5F')
+                .replace(/\./g, '%2E')
+                .replace(/!/g, '%21')
+                .replace(/~/g, '%7E')
+                .replace(/\*/g, '%2A')
+                .replace(/'/g, '%27')
+                .replace(/\(/g, '%28')
+                .replace(/\)/g, '%29');
+    
+                const queryString1 = encoded1;
+                const queryString2 = encoded2;
+
+                // Define Variables for Amazon US Search URLs
+
+                let walmartcaLink1 = 'https://trianguloy.github.io/intent/https://www.walmart.ca/en/search?q=' + queryString1 + '&facet=retailer_type:Walmart#Intent;action=android.intent.action.VIEW;S.android.intent.extra.TEXT=https%3A%2F%2Fwww.walmart.ca%2Fen%2Fsearch%3Fq%3D' + queryString2 + '%26facet%3Dretailer_type%3AWalmart;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end';
+                let alertBox1 = document.getElementById('alertBox1');
+
+                if (queryString1) {
+                    alertBox1.innerHTML = `
+                        <a href='${walmartcaLink1}' target='_blank'>Open Walmart App & Search Products Sold by Walmart Canada</a>
+                    `;
+                    alertBox1.style.display = 'block';
+                } else {
+                    alertBox1.style.display = 'none';
+                }
+            }
+        }
+
+        // Trigger search on button click
+        document.getElementById('searchBtn1').addEventListener('click', performSearch1);
+
+        // Trigger search on pressing Enter in the textbox
+        document.getElementById('textInput1').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            performSearch1();
+        }
+        });
+
+// JavaScript Section End
+
+</script>
+
+</body>
+
+</html>
