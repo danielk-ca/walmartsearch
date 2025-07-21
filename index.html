@@ -47,7 +47,23 @@
     </br>
     <h5><b><span style='background:rgb(242, 248, 253)'>Limit Search Products Sold by Walmart Canada</span></b></h5>
     </br>
-    <a href="https://trianguloy.github.io/intent/#Intent;action=android.intent.action.MAIN;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end" target="_blank"><img width="207" src="images/walmart-canada.png"/></a></br>
+
+    <details id="section1">
+        <summary>
+            <img src="images/walmart-canada.png" style="width:207px; cursor:pointer;">
+        </summary>
+        <div class="details-info mt-3">
+            <a href="https://trianguloy.github.io/intent/#Intent;action=android.intent.action.MAIN;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end" target="_blank">
+                <img src="images/walmartapp.png" style="width:26px">
+            </a><br>
+            <a href="https://trianguloy.github.io/intent/#Intent;action=android.intent.action.MAIN;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end" target="_blank">Open Walmart App</a><br><br>
+    
+            <a href="https://www.walmart.ca/en/" target="_blank">
+                <img src="images/openlink.png" style="width:26px">
+            </a><br>
+            <a href="https://www.walmart.ca/en/" target="_blank">Open Walmart.ca Website</a>
+        </div>
+    </details>
 
     <div class="col-md-6 offset-md-3 mt-4">
         <div class="input-group mb-3">
@@ -127,15 +143,18 @@
                 const queryString1 = encoded1;
                 const queryString2 = encoded2;
 
-                // Define Variables for Amazon US Search URLs
+                // Define Variables for Walmart Search URLs
 
                 let walmartcaLink1 = 'https://trianguloy.github.io/intent/https://www.walmart.ca/en/search?q=' + queryString1 + '&facet=retailer_type:Walmart#Intent;action=android.intent.action.VIEW;S.android.intent.extra.TEXT=https%3A%2F%2Fwww.walmart.ca%2Fen%2Fsearch%3Fq%3D' + queryString2 + '%26facet%3Dretailer_type%3AWalmart;component=ca.walmart.ecommerceapp/com.walmart.glass.integration.splash.SplashActivity;end';
+                let walmartcaLink2 = 'https://www.walmart.ca/en/search?q=' + queryString1 + '&facet=retailer_type:Walmart';
                 let alertBox1 = document.getElementById('alertBox1');
 
                 if (queryString1) {
                     alertBox1.innerHTML = `
-                    <a href='${walmartcaLink1}'><img src="images/walmartapp.png" style="width:26px"></a><br>
-                    <a href='${walmartcaLink1}'>Open Walmart App & Search Products Sold by Walmart Canada</a>
+                    <a href='${walmartcaLink1}' target="_blank"><img src="images/walmartapp.png" style="width:26px"></a><br>
+                    <a href='${walmartcaLink1}' target="_blank">Walmart App: Search Products Sold by Walmart</a><br><br>
+                    <a href='${walmartcaLink2}' target="_blank"><img src="images/openlink.png" style="width:26px"></a><br>
+                    <a href='${walmartcaLink2}' target="_blank">Walmart.ca Website: Search Products Sold by Walmart</a>
                     `;
                     alertBox1.style.display = 'block';
                 } else {
